@@ -1,0 +1,11 @@
+# Local analysis environment (Python 3.12+).
+# Model fitting and apply_model run in Google Colab with keypoint-moseq==0.6.8;
+# nothing here re-fits the model, so jax is not required locally.
+h5py>=3.10
+numpy>=1.26,<2
+pandas>=2.0
+scipy>=1.11
+matplotlib>=3.8
+seaborn>=0.13
+statsmodels>=0.14
+networkx>=3.0
