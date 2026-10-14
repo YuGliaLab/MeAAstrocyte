@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+results/
+.ipynb_checkpoints/
+data/model/*.h5
+data/batch_A_BL_Ctl/
+data/batch_B_FST/
