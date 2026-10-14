@@ -1,0 +1,28 @@
+# Code review and reproducibility notes
+
+Reviewed 14 October 2026 against the supplied ZIP. This is a review of the supplied code and documentation, not independent validation of the study results.
+
+## Changes made for repository preparation
+
+- Retained all 11 scripts, all supplied data/configuration files, and all 15 PDF figures in their existing functional folders. Keeping scripts together preserves their relative-path assumptions.
+- Added a short README; moved and corrected the longer usage guide to `docs/ANALYSIS_GUIDE.md`.
+- Added output-folder creation to `subject_metrics.py` and `calex_vs_control.py`, so they can run first in a fresh checkout. No statistical or behavioral calculations were changed.
+- Added `.gitignore` for local environments, caches, generated results, and raw/model files.
+
+## Items for the authors to confirm
+
+1. **Missing inputs.** No raw videos, curated SLEAP exports, SLEAP training labels/weights, keypoint-MoSeq checkpoint, or model-result HDF5 files are included. Exact reproduction of the reported results cannot be established from this archive alone. The methods state that the fitted checkpoint is available from the authors on request.
+2. **Frame rate.** `data/config.yml` and scripts use 30 fps; METHODS reports a video check of 36 fps. `subject_metrics.py` produces seconds, minutes, speed, and time-dependent thresholds, so those results do depend on the correct rate. Verify the source videos before rerunning or interpreting those quantities.
+3. **Software versions.** All three Colab scripts install unpinned `keypoint-moseq[cuda]` with an upgrade flag. METHODS names keypoint-MoSeq 0.6.8 and JAX 0.6.2. Preserve a tested environment before rerunning; current compatibility was not tested. Local dependencies are version ranges, not an exact historical environment.
+4. **Training tracks.** METHODS says only the subject was modeled, but `colab_fit_model.py` loads all tracks without an explicit subject-only filter and describes 16 tracks. Group tables contain subject and partner entries, and some pooled filters use both. Confirm the training population and align the methods with the actual original run.
+5. **Absent syllables.** Several tables omit recording/syllable combinations with zero occurrences. `syllable_pies.py` can consequently omit animals absent in both conditions from a syllable-specific test and omit zeros from group means. The line-plot and replica plots draw from sparse tables even though their test matrices fill missing cells with zero. Review this before using these scripts with other datasets or changing reported figures.
+6. **Plot interpretation.** `final_lineplot.py` defaults to time share; `--metric bouts` selects bout share. Its red star always highlights syllable 5, regardless of the computed p-value. Both line-plot scripts request a bootstrap 68% confidence interval, not an explicitly calculated SEM, and do not fix the bootstrap seed. The primary-outcome designation is supplied by the authors and cannot be verified from code alone.
+7. **Different label sources.** BL/FST uses `results.h5` from an application pass; CalEx/Control uses `results_old_model.h5` from training extraction. Do not mix the files. The optional all-12 script does not automatically redirect both local comparisons to its new output. Its fixed output name and `overwrite=True` also mean reruns can replace that output.
+8. **Methods/statistics alignment.** The CalEx script applies FDR correction across every retained syllable, including syllable 5; the final line plot excludes syllable 5 from the exploratory family. `kpms_stats_replica.py` implements Kruskal–Wallis or paired t-tests, not the full Dunn post-hoc procedure described in its introductory comments. These distinctions should be reflected in figure legends and methods.
+9. **Bout duration.** Time share divided by bout share is not alone a duration in frames. Multiply that ratio by total frames / total bouts for the recording, or calculate syllable frames / syllable bouts. The CalEx script uses the latter formula; the source METHODS and original guide describe the ratio incompletely.
+10. **Transitions and tracking.** Transition extraction omits the initial bout, pooled bout-frequency code concatenates recordings, and circular graphs use undirected NetworkX graphs from directional matrices. These implementation choices are retained for provenance and merit author review before claiming directional transition effects. The SLEAP metric interpolation also extends endpoint values despite a docstring saying endpoint NaNs remain.
+11. **Seed diagnostics.** The Colab seed script saves its CSV inside the project folder despite comments saying nothing is written there. Its printed summary multiplies the already percentage-point `range_pp` column by 100 again; its final maximum-spread line uses the correct scale. The local seed analysis needs both the CSV and the original HDF5 file and prints results to the console.
+
+## Validation
+
+All 11 Python files passed syntax parsing. The final time-share line plot ran successfully using the supplied long-form table, reporting syllable 5 paired t = 7.16, p = 0.0056 and four exploratory syllables surviving FDR correction (2, 3, 6, 13). This conflicts with the script’s introductory comment that none survive; the calculated result was not altered. Supplied files were inventoried and compared with the prepared collection. Full model fitting, tracking, and raw-data analyses were not run because the necessary inputs are absent. No biological conclusions or numerical results were changed as part of repository preparation.
