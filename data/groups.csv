@@ -1,0 +1,17 @@
+name,group,animal,condition,role,batch
+labels.v001.000_S282 BL FST.analysis_track0,BL_subject,S282,BL,subject,A
+labels.v001.000_S282 BL FST.analysis_track1,BL_partner,S282,BL,partner,A
+labels.v001.001_S280 BL FST.analysis_track0,BL_subject,S280,BL,subject,A
+labels.v001.001_S280 BL FST.analysis_track1,BL_partner,S280,BL,partner,A
+labels.v001.002_S232-FST Ctl.analysis_track0,BL_subject,S232,BL,subject,A
+labels.v001.002_S232-FST Ctl.analysis_track1,BL_partner,S232,BL,partner,A
+labels.v001.003_S233 FST Ctl_save_2024-09-19-141924.analysis_track0,BL_subject,S233,BL,subject,A
+labels.v001.003_S233 FST Ctl_save_2024-09-19-141924.analysis_track1,BL_partner,S233,BL,partner,A
+labels.v001.000_S232 FST.analysis_track0,FST_subject,S232,FST,subject,B
+labels.v001.000_S232 FST.analysis_track1,FST_partner,S232,FST,partner,B
+labels.v001.001_S233-FST.analysis_track0,FST_subject,S233,FST,subject,B
+labels.v001.001_S233-FST.analysis_track1,FST_partner,S233,FST,partner,B
+labels.v001.006_S282-FST.analysis_track0,FST_subject,S282,FST,subject,B
+labels.v001.006_S282-FST.analysis_track1,FST_partner,S282,FST,partner,B
+labels.v001.007_280-FST.analysis_track0,FST_subject,S280,FST,subject,B
+labels.v001.007_280-FST.analysis_track1,FST_partner,S280,FST,partner,B

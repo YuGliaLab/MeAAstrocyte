@@ -1,0 +1,17 @@
+name,group,animal,role
+labels.v001.000_S232 FST.analysis_track0,Control_Subject,S232,subject
+labels.v001.000_S232 FST.analysis_track1,Control_Partner,S232,partner
+labels.v001.001_S233-FST.analysis_track0,Control_Subject,S233,subject
+labels.v001.001_S233-FST.analysis_track1,Control_Partner,S233,partner
+labels.v001.002_S238-FST-rerun.analysis_track0,CalEX_Subject,S238,subject
+labels.v001.002_S238-FST-rerun.analysis_track1,CalEX_Partner,S238,partner
+labels.v001.003_S241-FST.analysis_track0,CalEX_Subject,S241,subject
+labels.v001.003_S241-FST.analysis_track1,CalEX_Partner,S241,partner
+labels.v001.004_S240-FST-Stress.analysis_track0,CalEX_Subject,S240,subject
+labels.v001.004_S240-FST-Stress.analysis_track1,CalEX_Partner,S240,partner
+labels.v001.005_S239-FST.analysis_track0,CalEX_Subject,S239,subject
+labels.v001.005_S239-FST.analysis_track1,CalEX_Partner,S239,partner
+labels.v001.006_S282-FST.analysis_track0,Control_Subject,S282,subject
+labels.v001.006_S282-FST.analysis_track1,Control_Partner,S282,partner
+labels.v001.007_280-FST.analysis_track0,Control_Subject,S280,subject
+labels.v001.007_280-FST.analysis_track1,Control_Partner,S280,partner
